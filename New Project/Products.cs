@@ -197,12 +197,6 @@ namespace New_Project
 
                     s = (int)(s + (price * quantity));
                 }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Note found");
-
-                }
             }
            
             Console.WriteLine($"Total price for {Category} is: {s}");
@@ -221,12 +215,6 @@ namespace New_Project
                     decimal quantity = Convert.ToDecimal(category[3]);
 
                     s = (int)(s + quantity);
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Note found");
-   
                 }
             }
             
