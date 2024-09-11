@@ -17,16 +17,17 @@ Console.WriteLine($"Welcome!\n\n" +
                     $"3.Update product,\n" +
                     $"4.Update property of product,\n" +
                     $"5.Sell products,\n" +
-                    $"6.Show total price,\n" +
-                    $"7.Show total quantity,\n" +
-                    $"8.Show total price by category,\n" +
-                    $"9.Show total quantity by category\n" +
+                    $"6.Remove products,\n" +
+                    $"7.Show total price,\n" +
+                    $"8.Show total quantity,\n" +
+                    $"9.Show total price by category,\n" +
+                    $"10.Show total quantity by category\n" +
                     $"====================================");
 
 string input = Console.ReadLine();
 int Secim;
 
-if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 9)
+if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 10)
 {
 
     if(Secim == 1)
@@ -406,6 +407,56 @@ if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 9)
 
     else if(Secim == 5)
     {
+    Sold:
+        Console.Clear();
+        Product.ShowAllProducts();
+        Console.Write("Write the ID of product: ");
+        string Index = Console.ReadLine();
+        int index;
+
+        ArrayList products = Product.GetProducts();
+
+        int a = products.Count;
+
+
+        if (int.TryParse(Index, out index) && index >= 0 && index < a + 1)
+        {
+            Product.SellProducts(index);
+            Console.Clear();
+            Console.WriteLine("\nProduct Sold succesfully!");
+
+
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("Select the right option!");
+            Thread.Sleep(1000);
+            Console.Clear();
+            goto Sold;
+        }
+    Kec:
+        Thread.Sleep(1000);
+        Console.WriteLine("\nPress 'f' to return to the start or any other key to exit...");
+        string Kec = Console.ReadLine().ToLower();
+
+        if (Kec == "f".ToLower())
+        {
+            Console.Clear();
+            goto Start;
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("Press the right button!");
+            Thread.Sleep(1000);
+            Console.Clear();
+            goto Kec;
+        }
+    }
+
+    else if(Secim == 6)
+    {
         Removed:
         Console.Clear();
         Product.ShowAllProducts();  
@@ -420,9 +471,9 @@ if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 9)
         
         if (int.TryParse(Index, out index) && index >= 0 && index < a+1)
         {
-            Product.SellProduct(index);
+            Product.RemoveProduct(index);
             Console.Clear();
-            Console.WriteLine("\nProduct sold succesfully!");
+            Console.WriteLine("\nProduct Removed succesfully!");
 
             
         }
@@ -454,7 +505,7 @@ if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 9)
         }
     }
 
-    else if(Secim == 6)
+    else if(Secim == 7)
     {
         Console.Clear();
         Product.ShowTotalPrice();
@@ -479,7 +530,7 @@ if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 9)
         }
     }
 
-    else if(Secim == 7)
+    else if(Secim == 8)
     {
         Console.Clear();
         Product.ShowTotalQuantity();
@@ -504,7 +555,7 @@ if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 9)
         }
     }
 
-    else if(Secim == 8)
+    else if(Secim == 9)
     {
         Console.Clear();
         Console.WriteLine("Write the category: ");
@@ -531,7 +582,7 @@ if(int.TryParse(input, out Secim) && Secim > 0 && Secim <= 9)
         }
     }
 
-    else if(Secim == 9)
+    else if(Secim == 10)
     {
         Console.Clear();
         Console.WriteLine("Write the category: ");

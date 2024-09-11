@@ -143,10 +143,29 @@ namespace New_Project
             }
         }
 
-        public void SellProduct(int indexOfProduct)
+        public void RemoveProduct(int indexOfProduct)
         {
             products.RemoveAt(indexOfProduct - 1);
         }
+
+        public void SellProducts(int IndexOfProduct)
+        {
+           
+            ArrayList SoldProduct = (ArrayList)products[IndexOfProduct - 1];
+
+            int currentQuantity = Convert.ToInt32(SoldProduct[3]);  
+
+           
+            if (currentQuantity > 0)
+            {
+                SoldProduct[3] = currentQuantity - 1;  
+            }
+            else
+            {
+                Console.WriteLine("Product has finished!");
+            }
+        }
+
 
         public void ShowTotalPrice()
         {
